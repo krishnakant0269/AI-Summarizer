@@ -44,7 +44,7 @@ function Hero() {
 
           <button
             type="button"
-            onClick={() => window.open("https//")}
+            onClick={() => window.open("https://github.com/krishnakant0269/AI-Summarizer")}
             className="-black text-white  font-semibold  pr-4 pl-4 pt-1 pb-1 mt-[-40px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl"
           >
             <img
