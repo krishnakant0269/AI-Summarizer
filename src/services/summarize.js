@@ -1,28 +1,20 @@
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const summaryApi = createApi({
-    reducerPath: 'summaryApi',
+export const articleApi = createApi({
+    reducerPath: 'articleApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://open-ai21.p.rapidapi.com',
+        baseUrl: 'https://article-extractor-and-summarizer.p.rapidapi.com',
         prepareHeaders: (headers) => {
-            headers.set('X-RapidAPI-Key', '9f59056e33msh1e75fdad51d4b48p16e44ajsn36739427429c');
-            headers.set('X-RapidAPI-Host', 'open-ai21.p.rapidapi.com');
+            headers.set('X-RapidAPI-Key', "a056c4c7admsh4cc94355a6d94fdp1bbd85jsnd21f83a47f4f");
+            headers.set('X-RapidAPI-Host', 'article-extractor-and-summarizer.p.rapidapi.com');
             return headers;
         },
     }),
     endpoints: (builder) => ({
-        getSummary: builder.mutation({
-            query: (body) => ({
-                url: '/summary',
-                method: 'POST',
-                body,
-              }),
+        getSummary: builder.query({
+            query: (params) => `/summarize?url=${encodeURIComponent(params.articleUrl)}&length=3`,
         }),
     }),
 })
 
-export const { useGetSummaryMutation } = summaryApi
-
-
-
+export const { useLazyGetSummaryQuery } = articleApi

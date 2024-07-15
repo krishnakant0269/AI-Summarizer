@@ -5,22 +5,19 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const articleApi = createApi({
     reducerPath: 'articleApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://article-data-extraction-and-summarization.p.rapidapi.com',
+        baseUrl: 'https://api.articlextractor.com/v1',
         prepareHeaders: (headers) => {
-            headers.set('X-RapidAPI-Key', '9f59056e33msh1e75fdad51d4b48p16e44ajsn36739427429c');
-            headers.set('X-RapidAPI-Host', 'article-data-extraction-and-summarization.p.rapidapi.com');
             return headers;
         },
     }),
     endpoints: (builder) => ({
         getArticle: builder.query({
-            query: (params) =>  `/article?url=${encodeURIComponent(params.articleurl)}`,
+            query: (params) =>  `/extract?url=${encodeURIComponent(params.articleurl)}&language=en&api_token=SWUCcDYymNgp8s6re3AlZqnUnMhtKSieKXWpMMmM\n`,
         }),
     }),
 })
 
 export const { useLazyGetArticleQuery } = articleApi
-
 
 
 
